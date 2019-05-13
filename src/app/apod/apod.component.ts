@@ -17,6 +17,7 @@ import {
   templateUrl: './apod.component.html',
   styleUrls: ['./apod.component.scss']
 })
+
 export class ApodComponent implements OnInit {
 
   apod: Apod;
@@ -34,18 +35,21 @@ export class ApodComponent implements OnInit {
     });
   }
 
-  getApod(date: string): void {
+  getApod(date:string): void{
 
+    //If the date is falsy, use today's date
+    if(!date){
+      date = new Date().toISOString().slice(0,10);
+    }
+  
     this.apodService.getApod(date).subscribe(
-      (response: any) => {
+      (response:any)=>{
         this.apod = response;
-        //3.  Update this.date on each API call
-        this.date = this.randomDate(new Date(1995, 5, 16), new Date());
-        //4. Log this.date to the JS console
-        console.log(this.date);
+        this.date = this.randomDate(new Date(1995,5,16), new Date());
+        console.log(this.apod);
       }
     );
-
+  
   }
 
   //2. Create a method that returns a random date
