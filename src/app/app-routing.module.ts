@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// 1. import the component to which you want to redirect.
-import { ApodComponent } from './apod/apod.component';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/apod', pathMatch: 'full'},
-  { path: 'apod', component: ApodComponent },
-  { path: 'apod/:date', component: ApodComponent }
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
+  { path: 'register', component: RegisterComponent }
 ];
 
 @NgModule({
